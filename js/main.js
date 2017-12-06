@@ -47,8 +47,8 @@ function setShadow(x, y, b, c) {
 function exportAsPng() {
     var date = new Date();
     bootbox.prompt({
-        title: "Enter output filename (without '.9.png')",
-        value: "shadow_" + date.getHours() + "" + date.getMinutes() + "" + date.getSeconds(),
+        title: "Enter output filename (without '.png')",
+        value: "shadow." + canvas.width + "." + canvas.height,
         callback: function(result) {
             if (result !== null && result !== "") {
                 //Show ninepatches If hidden when exporting
@@ -65,11 +65,11 @@ function exportAsPng() {
                 //Use BlobHD If supported
                 if (canvas.toBlobHD) {
                     canvas.toBlobHD(function (blob) {
-                        saveAs(blob, result + ".9.png");
+                        saveAs(blob, result + ".png");
                     });
                 } else {
                     canvas.toBlob(function (blob) {
-                        saveAs(blob, result + ".9.png");
+                        saveAs(blob, result + ".png");
                     });
                 }
 
